@@ -1,0 +1,13 @@
+{
+  "name": "valetudo-minecraft-mapper",
+  "version": "2021.03.0",
+  "description": "Create a Minecraft Map from your Valetudo Map",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hypfer/Valetudo-Minecraft-Mapper.git"
+  },
+  "dependencies": {
+    "node-anvil": "^1.2.0"
+  }
+}
