@@ -25,6 +25,26 @@ if(!mapData.__class === "ValetudoMap") {
     process.exit(-1);
 }
 
+if (mapData.metaData?.version === 2 && Array.isArray(mapData.layers)) {
+    mapData.layers.forEach(layer => {
+        if(layer.pixels.length === 0 && layer.compressedPixels.length !== 0) {
+            for (let i = 0; i < layer.compressedPixels.length; i = i + 3) {
+                const xStart = layer.compressedPixels[i];
+                const y = layer.compressedPixels[i+1]
+                const count = layer.compressedPixels[i+2]
+
+                for(let j = 0; j < count; j++) {
+                    layer.pixels.push(
+                        xStart + j,
+                        y
+                    );
+                }
+            }
+        }
+    })
+}
+
+
 console.info("Using Map File " + process.argv[2]);
 
 const outputPath = path.join(path.resolve(process.argv[3]), "ValetudoMapRender");
